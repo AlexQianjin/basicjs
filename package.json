@@ -1,0 +1,28 @@
+{
+  "name": "basicjs",
+  "version": "1.0.0",
+  "description": "basic JavaScript code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexQianjin/basicjs.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "JavaScript",
+    "Node"
+  ],
+  "author": "'Alex Qin'",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexQianjin/basicjs/issues"
+  },
+  "homepage": "https://github.com/AlexQianjin/basicjs#readme",
+  "dependencies": {
+    "eslint": "^5.15.1"
+  }
+}
