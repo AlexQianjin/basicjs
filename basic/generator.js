@@ -1,9 +1,9 @@
 function* abc() {
-    let count = 0;
-    while(true) {
-        let msg = yield ++count;
-        // console.log(msg);
-    }
+	let count = 0;
+	while (true) {
+		let msg = yield ++count;
+		console.log(msg);
+	}
 }
 
 let iter = abc();

@@ -1,18 +1,18 @@
 var superagent = require('superagent');
 
 var url = 'http://www.cnblogs.com';
-function getResult(){
-    superagent
-    .get(url)
-    .set('Referer','https://www.baidu.com')
-    .set('Accept','image/webp,image/*,*/*;q=0.8')
-    .end(
-        function(req,res){
-            console.log(url);
-            console.log(res.text.substr(0,30));
-            console.log(new Date());
-        }
-    );
+function getResult() {
+	superagent
+		.get(url)
+		.set('Referer', 'https://www.baidu.com')
+		.set('Accept', 'image/webp,image/*,*/*;q=0.8')
+		.end(
+			function (req, res) {
+				console.log(url);
+				console.log(res.text.substr(0, 30));
+				console.log(new Date());
+			}
+		);
 }
 var time = 1000 * 60 * 5;
 setInterval(getResult, time);
@@ -107,7 +107,7 @@ setInterval(getResult, time);
 //         funcs[index] = (function (index) { 
 //             return function() { return index;};
 //         }(index));
-        
+
 //     }
 //     return funcs;
 // }

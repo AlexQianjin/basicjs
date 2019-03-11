@@ -1,16 +1,16 @@
 // var promise1 = new Promise(function(resolve, reject) {
 //     // throw new Error('xxx');
-//     setTimeout(function() { 
+//     setTimeout(function() {
 //       resolve('foo');
 //     }, 300);
 //   });
-  
-// promise1.then(function(value) { 
+
+// promise1.then(function(value) {
 // console.log(value);
 // // expected output: "foo"
 // var promise2 = new Promise(function(resolve, reject) {
 //   // throw new Error('xxx');
-//   setTimeout(function() { 
+//   setTimeout(function() {
 //     resolve('doo');
 //   }, 300);
 // });
@@ -22,27 +22,32 @@
 // }).finally(function () {
 //     console.log('The end');
 // });
-  
+
 //   console.log(promise1);
 
 // let date = new Date();
 // console.log(date.getTime());
 
 function start() {
-  return new Promise((resolve, reject) => {
-    resolve('start');
-  });
+	return new Promise((resolve, reject) => {
+		try {
+			resolve('start');
+		} catch (error) {
+			reject(error);
+		}
+	});
 }
+
 start()
-  .then(data => {
-    // promise start
-    console.log(data);
-    return new Promise(resolve => resolve(1));
-    // return Promise.resolve(1); // 1
-  })
-  .then(data => {
-    // promise 1
-    console.log(data);
-  })
+	.then(data => {
+		// promise start
+		console.log(data);
+		return new Promise(resolve => resolve(1));
+		// return Promise.resolve(1); // 1
+	})
+	.then(data => {
+		// promise 1
+		console.log(data);
+	});
 // start
 // 1

@@ -4,9 +4,8 @@
 // const saveCityZipCode = (city, zipCode) => console.log(city, zipCode);
 // saveCityZipCode(city, zipCode);
 
-
-function createMicrobrewery(name = "Hipster Brew Co.") {
-    console.log(name);
+function createMicrobrewery(name = 'Hipster Brew Co.') {
+	console.log(name);
 }
 
 createMicrobrewery();

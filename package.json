@@ -22,7 +22,8 @@
     "url": "https://github.com/AlexQianjin/basicjs/issues"
   },
   "homepage": "https://github.com/AlexQianjin/basicjs#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "eslint": "^5.15.1"
   }
 }

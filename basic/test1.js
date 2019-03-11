@@ -9,7 +9,6 @@
 
 // // f1.call(person, 'study');
 
-
 // // console.log(~1);
 
 // var num = 5;
@@ -27,7 +26,6 @@
 // };
 // fun2(obj);
 // console.log(obj.num);
-
 
 // console.log(new Buffer('qqj0124').toString('base64'));
 
@@ -69,7 +67,7 @@
 // var obj = {text: 'text'};
 
 // function write (s) {
-	
+
 // 	console.log(this.text + ' ' + s);
 // }
 
@@ -78,11 +76,11 @@
 // w();
 
 //Array Map
-// var kvArray = [{key: 1, value: 10}, 
-// 	{key: 2, value: 20}, 
+// var kvArray = [{key: 1, value: 10},
+// 	{key: 2, value: 20},
 // 	{key: 3, value: 30}];
 
-// var reformattedArray = kvArray.map(obj =>{ 
+// var reformattedArray = kvArray.map(obj =>{
 // 	var rObj = {};
 // 	rObj[obj.key] = obj.value;
 // 	return rObj;
@@ -420,8 +418,8 @@ const contents = JSON.parse(`[
 	}
   ]`);
 
-  for (const repo in contents) {
-	  console.log(repo);
-  }
+for (const repo in contents) {
+	console.log(repo);
+}
 
 // console.log(contents);

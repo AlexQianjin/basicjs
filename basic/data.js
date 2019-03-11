@@ -12,10 +12,10 @@
 //   var arr = [];
 //   for(var i=0;i<5;i++){
 //       arr[i] = (function(i){
-//           // return function(){ return i;};                            
-//           return () => i;    
-//       }(i));                                        
-//   }                                            
+//           // return function(){ return i;};
+//           return () => i;
+//       }(i));
+//   }
 //   return arr;
 // }
 
@@ -46,14 +46,14 @@
 // 		['/', '@', '#', '*'].forEach(item => {
 // 			alias = alias.replace(item, '');
 //         });
-        
+
 //         console.log(alias);
 
 let arr = [1, 1, 3, 3, 9, 5, 5, 7, 7];
 let result = 0;
 for (let index = 0; index < arr.length; index++) {
-    const element = arr[index] ^ result;
-    result = element
+	const element = arr[index] ^ result;
+	result = element;
 }
 
 console.log(result);

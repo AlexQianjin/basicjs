@@ -5,11 +5,11 @@ let numbers = new Set(arr);
 console.log(numbers);
 
 class SuperArray extends Array {
-    diff(comparisonArray) {
-      const hash = new Set(comparisonArray);
-      return this.filter(elem => !hash.has(elem));
-    }
-  }
+	diff(comparisonArray) {
+		const hash = new Set(comparisonArray);
+		return this.filter(elem => !hash.has(elem));
+	}
+}
 
 let superArr = new SuperArray();
 // console.log(superArr.diff(arr));
