@@ -27,11 +27,11 @@ var printer = (function() {
 		}
 	};
 
-	function Singleton() {
-		if (!printerInstance) {
-			printerInstance = intialize();
-		}
-	}
+	// function Singleton() {
+	// 	if (!printerInstance) {
+	// 		printerInstance = intialize();
+	// 	}
+	// }
 })();
 
 var officePrinter = printer.getInstance();

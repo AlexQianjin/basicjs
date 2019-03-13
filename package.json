@@ -4,6 +4,7 @@
   "description": "basic JavaScript code",
   "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint ./basic",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
