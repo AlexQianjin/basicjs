@@ -4,8 +4,20 @@ const users = [
 	{ name: 'Milady', age: 22 }
 ];
 
-const compose = (...functions) => args =>
-	functions.reduceRight((arg, fn) => fn(arg), args);
+// const compose = (...functions) => args =>
+// 	functions.reduceRight((arg, fn) => fn(arg), args);
+
+function compose(...funcs) {
+	if (funcs.length === 0) {
+		return arg => arg;
+	}
+	
+	if (funcs.length === 1) {
+		return funcs[0];
+	}
+	
+	return funcs.reduce((a, b) => (...args) => a(b(...args)));
+}	
 
 const filter = cb => arr => arr.filter(cb);
 const map = cb => arr => arr.map(cb);
