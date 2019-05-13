@@ -14,3 +14,49 @@ var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 const result = words.filter(word => word.length > 6);
 
 console.log(result);
+
+let users = [
+	{
+		bio: null,
+		email: 'user@domain.com',
+		firstname: 'Anna',
+		id: 318,
+		lastAvatar: null,
+		lastMessage: null,
+		lastname: 'Nickson',
+		nickname: 'anny'
+	},
+	{
+		bio: null,
+		email: 'user@domain.com',
+		firstname: 'Tnna',
+		id: 318,
+		lastAvatar: null,
+		lastMessage: null,
+		lastname: 'Nickson',
+		nickname: 'anny'
+	},
+	{
+		bio: null,
+		email: 'user@domain.com',
+		firstname: 'Eric',
+		id: 318,
+		lastAvatar: null,
+		lastMessage: null,
+		lastname: 'Nickson',
+		nickname: 'anny'
+	}
+];
+
+users.sort(function(a, b) {
+	if (a.firstname < b.firstname) {
+		return -1;
+	}
+	if (a.firstname > b.firstname) {
+		return 1;
+	}
+	return 0;
+});
+
+console.log(users);
+
