@@ -25,6 +25,6 @@
   "homepage": "https://github.com/AlexQianjin/basicjs#readme",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^5.15.1"
+    "eslint": "^6.6.0"
   }
 }
