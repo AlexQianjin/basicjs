@@ -116,3 +116,143 @@ A web worker or a cross-origin `iframe` has its own stack, heap, and message que
 A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks. Handling I/O is typically performed via events and callbacks, so when the application is waiting for an IndexedDB query to return or an XHR request to return, it can still process other things like user input. 
 
 Legacy exceptions exist like alert or synchronous XHR, but it is considered as a good practice to avoid them. Beware: exceptions to the exception do exist (but are usually implementation bugs, rather than anything else).
+
+# **Basic concepts in Task**
+- An event loop has one or more task queues.(task queue is macrotask queue)
+- Each event loop has a microtask queue.
+- task queue = macrotask queue != microtask queue
+- a task may be pushed into macrotask queue,or microtask queue
+- when a task is pushed into a queue(micro/macro),we mean preparing work is finished,so the task can be executed now.
+
+## **Task Examples**
+### **macrotasks**
+- setTimeout
+- setInterval
+- setImmediate
+- requestAnimationFrame
+- I/O
+- UI rendering
+### **microtasks**
+- process.nextTick
+- Promises
+- Object.observe
+- MutationObserver
+
+# **Promise**
+A `Promise` is an object representing the eventual completion or failure of an asynchronous operation.
+
+Here's some code that uses `createAudioFileAsync()`:
+
+```javascript
+function successCallback(result) {
+  console.log("Audio file ready at URL: " + result);
+}
+
+function failureCallback(error) {
+  console.error("Error generating audio file: " + error);
+}
+
+createAudioFileAsync(audioSettings, successCallback, failureCallback);
+```
+
+…modern functions return a promise you can attach your callbacks to instead:
+
+If `createAudioFileAsync()` were rewritten to return a promise, using it could be as simple as this:
+
+```javascript
+createAudioFileAsync(audioSettings).then(successCallback, failureCallback);
+```
+
+That's shorthand for:
+
+```javascript
+const promise = createAudioFileAsync(audioSettings); 
+promise.then(successCallback, failureCallback);
+```
+
+## **Guarantees**
+Unlike "old-style", passed-in callbacks, a promise comes with some guarantees:
+
+- Callbacks will never be called before the completion of the current run of the JavaScript event loop.
+- Callbacks added with then() even after the success or failure of the asynchronous operation, will be called, as above.
+- Multiple callbacks may be added by calling then() several times. Each callback is executed one after another, in the order in which they were inserted.
+
+One of the great things about using promises is **chaining**.
+
+## **Chaining**
+A common need is to execute two or more asynchronous operations back to back, where each subsequent operation starts when the previous operation succeeds, with the result from the previous step. We accomplish this by creating a **promise chain**.
+
+In the old days, doing several asynchronous operations in a row would lead to the classic callback pyramid of doom:
+
+```javascript
+doSomething(function(result) {
+  doSomethingElse(result, function(newResult) {
+    doThirdThing(newResult, function(finalResult) {
+      console.log('Got the final result: ' + finalResult);
+    }, failureCallback);
+  }, failureCallback);
+}, failureCallback);
+```
+
+With modern functions, we attach our callbacks to the returned promises instead, forming a promise chain:
+
+```javascript
+doSomething()
+.then(function(result) {
+  return doSomethingElse(result);
+})
+.then(function(newResult) {
+  return doThirdThing(newResult);
+})
+.then(function(finalResult) {
+  console.log('Got the final result: ' + finalResult);
+})
+.catch(failureCallback);
+```
+
+The arguments to then are optional, and catch(failureCallback) is short for then(null, failureCallback). You might see this expressed with arrow functions instead:
+
+```javascript
+doSomething()
+.then(result => doSomethingElse(result))
+.then(newResult => doThirdThing(newResult))
+.then(finalResult => {
+  console.log(`Got the final result: ${finalResult}`);
+})
+.catch(failureCallback);
+```
+> **Important**: Always return results, otherwise callbacks won't catch the result of a previous promise (with arrow functions () => x is short for () => { return x; }).
+
+This symmetry with asynchronous code culminates in the `async/await` syntactic sugar in ECMAScript 2017:
+```javascript
+async function foo() {
+  try {
+    const result = await doSomething();
+    const newResult = await doSomethingElse(result);
+    const finalResult = await doThirdThing(newResult);
+    console.log(`Got the final result: ${finalResult}`);
+  } catch(error) {
+    failureCallback(error);
+  }
+}
+
+```
+
+## **Macro Task and Micro Task**
+```javascript
+console.log('script start');
+
+setTimeout(() => {
+  console.log('setTimeout 1');
+});
+
+Promise.resolve()
+.then(() => {
+  console.log('promise 1');
+})
+.then(() => {
+  console.log('promise 2');
+});
+
+console.log('script end');
+```
