@@ -18,6 +18,7 @@
 		let checkButton = document.querySelector('.RoomLevelDetail-icon');
 		let lastTime = document.querySelector('.Title-lastLiveTimeText');
 		if (lastTime) {
+			clearInterval(intervalId);
 			window.location.reload();
 		}
 		if (roomLevel) {
@@ -37,5 +38,5 @@
 			}
 		}
 	};
-	intervalId = setInterval(checkOnline, 2 * 1000);
+	intervalId = setInterval(checkOnline, 3 * 1000);
 })();
