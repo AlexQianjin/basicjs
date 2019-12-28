@@ -7,3 +7,4 @@
 | Alex | JavaScript Event Loop | 12/13/2019 17:00 - 17:30 |
 | Jason | TypeScript Traing - type compatibility & advanced types | 12/20/2019
  17:00 - 17:30 |
+ | Echo |  JavaScript currying/debounce/throttle | 12/27/2019 17:00 - 17:30 |
