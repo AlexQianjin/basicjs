@@ -23,8 +23,11 @@
     "url": "https://github.com/AlexQianjin/basicjs/issues"
   },
   "homepage": "https://github.com/AlexQianjin/basicjs#readme",
-  "dependencies": {},
+  "dependencies": {
+    "date-fns": "^2.22.1",
+    "date-fns-tz": "^1.1.4"
+  },
   "devDependencies": {
-    "eslint": "^6.6.0"
+    "eslint": "^7.30.0"
   }
 }
