@@ -429,3 +429,37 @@ console.log(arrTimeZoneOffsets);
 // }, {});
 
 // console.log(objTimeZone);
+
+let scheduledTimes = ['Monday|02:00-08:00', 'Sunday|12:00-20:00'].map(t => {
+	let [day, availableTime] = t.split('|');
+	availableTime = availableTime.replace('-', ' to ');
+	return {available: 'true', day, availableTime};
+});
+
+console.log(scheduledTimes, 438);
+
+const testArray = (scheduledTimes) => {
+	const rows = [
+		{ available: 'false', day: 'Monday', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Tuesday', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Wednesday', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Thurdsay', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Friday', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Saturday', availableTime: '08:00 to 20:00' },
+		{ available: 'false', day: 'Sunday', availableTime: '08:00 to 20:00' }
+	];
+
+	let updated = rows.map(r => {
+		let selectedDay = scheduledTimes.find(s => s.day === r.day);
+		console.log(selectedDay, 454);
+		if(selectedDay) {
+			return {...r, ...selectedDay};
+		}
+		console.log('no schedule', 457);
+
+		return r;
+	});
+	console.log(updated, 453);
+};
+
+testArray(scheduledTimes);
