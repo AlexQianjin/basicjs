@@ -416,9 +416,16 @@ for (let index = -12; index < 15; index++) {
 		element = `${index > 9 ? '+' : ''}${index}:00`;
 	}
 
-	arrTimeZoneOffsets.push(element);
+	arrTimeZoneOffsets.push({key: element, value: index});
 }
 
 console.log(arrTimeZoneOffsets);
 
-arrTimeZoneOffsets.forEach(t => console.log(t, date_fns_tz.getTimezoneOffset(t) / 1000 / 60 / 60));
+// arrTimeZoneOffsets.forEach(t => console.log(t, date_fns_tz.getTimezoneOffset(t) / 1000 / 60 / 60));
+
+// const objTimeZone = arrTimeZoneOffsets.reduce((acc, cur) => {
+// 	acc[cur] = cur;
+// 	return acc;
+// }, {});
+
+// console.log(objTimeZone);
